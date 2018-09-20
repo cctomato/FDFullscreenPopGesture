@@ -1,3 +1,5 @@
+# Add setHidesBottomBarWhenPushed
+
 # FDFullscreenPopGesture
 An UINavigationController's category to enable fullscreen pop gesture in an iOS7+ system style with AOP.
 

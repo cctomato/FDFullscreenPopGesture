@@ -175,6 +175,9 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
     
     // Forward to primary implementation.
     if (![self.viewControllers containsObject:viewController]) {
+        if (self.tabBarController && self.viewControllers.count == 1) {
+            [viewController setHidesBottomBarWhenPushed:YES];
+        }
         [self fd_pushViewController:viewController animated:animated];
     }
 }
