@@ -98,6 +98,20 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
     // Forward to primary implementation.
     [self fd_viewWillAppear:animated];
     
+    if (self.navigationController) {
+        NSArray *subViews = self.navigationController.navigationBar.subviews;
+        if (subViews.count > 0) {
+            UIView *firstView = [subViews firstObject];
+            for (id object in firstView.subviews) {
+                if ([object isKindOfClass:[UIImageView class]]) {
+                    UIImageView *line = (UIImageView *)object;
+                    line.hidden = YES;
+                    break;
+                }
+            }
+        }
+    }
+    
     if (self.fd_willAppearInjectBlock) {
         self.fd_willAppearInjectBlock(self, animated);
     }
