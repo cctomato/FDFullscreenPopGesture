@@ -103,10 +103,11 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
         if (subViews.count > 0) {
             UIView *firstView = [subViews firstObject];
             for (id object in firstView.subviews) {
-                if ([object isKindOfClass:[UIImageView class]]) {
-                    UIImageView *line = (UIImageView *)object;
-                    line.hidden = YES;
-                    break;
+                if ([object isKindOfClass:[UIView class]]) {
+                    UIView *secondView = (UIView *)object;
+                    if (secondView.bounds.size.height < 1) {
+                        secondView.hidden = YES;
+                    }
                 }
             }
         }
